@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # read in the images
-norman = cv2.imread("norman.png")
+norman = cv2.imread("/Users/petemango/beatSaberProject/openCV_light_detection/norman.png")
 norman_rgb = np.copy(norman)
 
 # convert the image to grey scale
