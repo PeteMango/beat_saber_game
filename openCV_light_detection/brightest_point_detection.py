@@ -1,9 +1,10 @@
+from pathlib import Path
 import cv2 
 import matplotlib.pyplot as plt
 import numpy as np
 
 # read in the images
-img_src = "/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/images/jeffrey.png"
+img_src = str(Path(__file__).parent) + "/images/1.jpg"
 img_main = cv2.imread(img_src)
 img_rgb = np.copy(img_main)
 
