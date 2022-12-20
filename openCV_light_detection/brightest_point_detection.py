@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # read in the images
-img_src = "C:\\Users\\gavin\\OneDrive\Documents\\GitHub\\beatSaberProject\\openCV_light_detection\images\\3.jpg" #i cant get local open to work wtf
+img_src = "/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/images/2.jpg" #i cant get local open to work wtf
 img_main = cv2.imread(img_src)
 img_rgb = np.copy(img_main)
 
@@ -30,3 +30,5 @@ plt.subplot(1, 1, 1)
 plt.imshow(brightest_box, cmap="gray")  
 plt.show()  
 
+# save the image to the file
+cv2.imwrite("/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/processed_images/2.jpg", brightest_box)
