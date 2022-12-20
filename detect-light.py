@@ -16,10 +16,15 @@ args = vars(arg_par.parse_args())
 # load image, then grayscale and blur it
 img = cv2.imread(args["image"])
 grayscaled = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-blurred = cv2.GaussianBlur(grayscaled, (11, 11), 0)
+blurred = cv2.medianBlur(grayscaled, 21)
+
+min_max_info = cv2.minMaxLoc(blurred)
+brightest_value = min_max_info[1]
+
+print(brightest_value)
 
 # any pixel >= 200 is set to white (255) and any < 200 are set to black
-brightest_only = cv2.threshold(blurred, 250, 255, cv2.THRESH_BINARY)[1]
+brightest_only = cv2.threshold(blurred, brightest_value-3, 255, cv2.THRESH_BINARY)[1]
 
 # remove small areas/noise
 brightest_only = cv2.erode(brightest_only, None, iterations=2)
@@ -28,7 +33,7 @@ brightest_only = cv2.dilate(brightest_only, None, iterations=4)
 # find contours
 contours, hierarchy = cv2.findContours(brightest_only, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 num_contours = len(contours)
-
+#
 #initialize to smallest possible
 max_circ = 0
 most_circ_contour = None
@@ -54,7 +59,7 @@ else:
     print("ERROR")
 
 cv2.drawContours(img, [most_circ_contour], -1, (0, 255, 0), 2)
-cv2.circle(img, (centerX, centerY), 7, (255, 255, 255), -1)
+cv2.circle(img, (centerX, centerY), 7, (125, 125, 125), -1)
 cv2.putText(img, "center", (centerX - 20, centerY - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
 cv2.imshow("Image", img)
