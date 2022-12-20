@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # read in the images
-img_src = "/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/images/2.jpg" #i cant get local open to work wtf
+img_src = "/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/images/3.jpg" #i cant get local open to work wtf
 img_main = cv2.imread(img_src)
 img_rgb = np.copy(img_main)
 
@@ -11,9 +11,12 @@ img_rgb = np.copy(img_main)
 img_grey = np.copy(img_main)
 img_grey = cv2.cvtColor(img_grey, cv2.COLOR_BGR2GRAY)
 
+# apply median blur
+median_blur = cv2.medianBlur(img_grey, 21)
+
 # find the max brightness x and y values
-max_x = cv2.minMaxLoc(img_grey)[3][0]
-max_y = cv2.minMaxLoc(img_grey)[3][1]
+max_x = cv2.minMaxLoc(median_blur)[3][0]
+max_y = cv2.minMaxLoc(median_blur)[3][1]
 
 # make a square of length 50 to display the brightest spot
 s = 50
@@ -31,4 +34,4 @@ plt.imshow(brightest_box, cmap="gray")
 plt.show()  
 
 # save the image to the file
-cv2.imwrite("/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/processed_images/2.jpg", brightest_box)
+# cv2.imwrite("/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/processed_images/3.jpg", brightest_box)
