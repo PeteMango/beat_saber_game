@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # read in the images
-img_src = "/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/images/norman.png"
+img_src = "/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/images/stock_image.jpeg"
 img_main = cv2.imread(img_src)
 img_rgb = np.copy(img_main)
 
@@ -34,4 +34,4 @@ plt.imshow(brightest_box, cmap="gray")
 plt.show()  
 
 # save the image to the file
-cv2.imwrite("/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/processed_images/norman.jpg", brightest_box)
+cv2.imwrite("/Users/petemango/SIDE PROJECTS/beatSaberProject/openCV_light_detection/processed_images/stock_image.jpg", brightest_box)
