@@ -60,8 +60,3 @@ def get_brightest_point(img):
     cv2.circle(img, (centerX, centerY), 7, (125, 125, 125), -1)
     print("x: {}, y: {}".format(centerX, centerY))
     #cv2.putText(img, "center", (centerX - 20, centerY - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
-
-
-
-
-# python3 detect-light.py -i images/image2.png
