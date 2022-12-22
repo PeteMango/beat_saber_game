@@ -32,6 +32,7 @@ def get_brightest_point(img_main):
     brightest_box =np.copy(img_rgb)
     brightest_box = cv2.rectangle(brightest_box, coordinate_left, coordinate_right, color, t)
 
+    cv2.circle(img_main, (max_x, max_y), 7, (125, 125, 125), -1)
     # show the plot
     # plt.subplot(1, 1, 1)  
     # plt.imshow(brightest_box, cmap="gray")  
