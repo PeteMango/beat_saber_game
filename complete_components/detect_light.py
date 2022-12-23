@@ -5,13 +5,12 @@ pi = 3.1415926535897932384626
 def circularity(area, perimeter):
     return (4 * pi * area) / (perimeter ** 2)
 
-
 # creates terminal arguments
 #arg_par = argparse.ArgumentParser()
 #arg_par.add_argument("-i", "--image", required=True, help="path to img file")
 #args = vars(arg_par.parse_args())
 
-def get_brightest_point(img):
+def image_processing (img):
     # grayscale and blur image
     grayscaled = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     blurred = cv2.medianBlur(grayscaled, 21)
@@ -55,8 +54,22 @@ def get_brightest_point(img):
     else:
         centerX, centerY = 0,0
         print("ERROR")
+    brightest_point_info = {
+        "center_x": centerX,
+        "center_y": centerY
+    }
+    return brightest_point_info
+
+def get_brightest_point (img):
+    brightest_point = image_processing(img)
+    centerX = brightest_point['center_x']
+    centerY = brightest_point['center_y']
 
     #cv2.drawContours(img, [most_circ_contour], -1, (0, 255, 0), 2)
     cv2.circle(img, (centerX, centerY), 7, (125, 125, 125), -1)
     print("x: {}, y: {}".format(centerX, centerY))
     #cv2.putText(img, "center", (centerX - 20, centerY - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+
+def get_brightest_point_coordinates (img):
+    brightest_point = image_processing(img)
+    return brightest_point
