@@ -2,11 +2,12 @@ import cv2
 import numpy as np
 from detect_light import *
 
+
 class Coord:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-    
+
     def __str__(self):
         return "Coord: ({self.x}, {self.y})"
 
@@ -20,6 +21,7 @@ def remove_front(arr, n):
         arr.pop(0)
         n -= 1
     return arr
+
 
 color = (0, 255, 0)
 thickness = 9
@@ -61,7 +63,7 @@ while (cv2.waitKey(1) & 0xFF != ord('q')):
 
     print(c)
 
-    for i in range (1, cur_len):
+    for i in range(1, cur_len):
         prev_x = coords[i].x
         prev_y = coords[i].y
         cur_x = coords[i-1].x
